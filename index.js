@@ -13,7 +13,16 @@ searchField.on("input", function() {
     var results = []
     for (var k in classes) {
         if (k.toLowerCase().includes(term.toLowerCase())) {
-            results.push(k)
+            if (simpleNameIncludes(k, term)) {
+                results.push(k)
+            }
+        }
+    }
+    for (var k in classes) {
+        if (k.toLowerCase().includes(term.toLowerCase())) {
+            if (!simpleNameIncludes(k, term)) {
+                results.push(k)
+            }
         }
     }
     var text = "<br>";
@@ -62,6 +71,11 @@ function getReturnTypeName(clazz) {
     } else {
         return clazz.substr(clazz.lastIndexOf(".") + 1);
     }
+}
+
+function simpleNameIncludes(clazz, includes) {
+    var simplename = clazz.substr(clazz.lastIndexOf(".") + 1)
+    return simplename.trim().toLowerCase() == includes.trim().toLowerCase()
 }
 
 
