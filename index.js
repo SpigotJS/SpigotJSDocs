@@ -28,12 +28,12 @@ searchField.keydown(function(ev) {
                     }
                 }
                 if (params.length === 0) {
-                    methodText += `${k}(): ${getReturnTypeName(method.returns)}<br>";
+                    methodText += `${k}(): ${getReturnTypeName(method.returns)}<br>`;
                 } else {
-                    let paramterString = getReturnTypeName(method[params[0]]) + " " + params[0];
+                    let paramterString = `${getReturnTypeName(method[params[0]])} ${params[0]}`;
                     for (let i2 = 1; i2 < params.length; i2++) {
                         let paramter = params[i2];
-                        paramterString += ", ${getReturnTypeName(method[params[i2]])} ${params[i2]}";
+                        paramterString += `, ${getReturnTypeName(method[params[i2]])} ${params[i2]}`;
                     }
                     methodText += `${k}(${paramterString}): ${getReturnTypeName(method.returns)}<br>`;
                 }
