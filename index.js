@@ -1,6 +1,6 @@
 let classes = [];
-let searchField = $("#searchfield")
-$.getJSON("BukkitAPI.json", function(data) {
+let searchField = $("#searchfield");
+$.getJSON("BukkitAPI.json", (data) => {
     $("#loadingDiv").hide();
     classes = data;
     $("#site").show();
@@ -50,10 +50,7 @@ searchField.keydown(function(ev) {
     }
 });
 const getReturnTypeName = ((clazz) => ["void", "boolean", "int", "double", "float", "char", "byte", "short"].includes(clazz) ? clazz : clazz.substr(clazz.lastIndexOf(".") + 1));
-function simpleNameIncludes(clazz, includes) {
-    let simplename = clazz.substr(clazz.lastIndexOf(".") + 1);
-    return simplename.trim().toLowerCase() == includes.trim().toLowerCase();
-}
+const simpleNameIncludes = ((clazz, includes) => clazz.substr(clazz.lastIndexOf(".") + 1).trim().toLowerCase() == includes.trim().toLowerCase());
 $("a").click(function() {
     alert("You've clicked the link.");
 });
